@@ -345,6 +345,7 @@ function Library:Create(xHubName,xGameName)
             local Toggle = Instance.new("Frame")
             local ToggleCorner = Instance.new("UICorner")
             local ToggleCircle = Instance.new("ImageLabel")
+            local ToggleButton = Instance.new("TextButton")
 
             ToggleFrame.Name = tostring(Name).."_Toggle"
             ToggleFrame.Parent = Tab
