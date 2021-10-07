@@ -52,6 +52,8 @@ function Library:Drag(_gui)
     end)
 end
 
+Library:Drag(Main)
+
 function Library:Create(_HubName,_GameName)
     local HubName = HubName or "UI Library"
     local GameName = GameName or "By Mapple#3045"
@@ -161,7 +163,6 @@ function Library:Create(_HubName,_GameName)
     Tabs.Name = "Tabs"
     Tabs.Parent = TabHolder
 
-    Library:Drag(Main)
 
     local _Tabs = {}
     
