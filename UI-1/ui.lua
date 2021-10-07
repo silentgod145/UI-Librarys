@@ -160,9 +160,9 @@ function Library:Create(_HubName,_GameName)
     end)
 
 
-    local _Tabs = {}
+    local xTabs = {}
     
-    function _Tabs:Tab(Name,_Visible)
+    function xTabs:Tab(Name,xVisible)
         local Name = Name or "Tab"
         local Tab = Instance.new("ScrollingFrame")
         local TabListLayout = Instance.new("UIListLayout")
@@ -175,7 +175,7 @@ function Library:Create(_HubName,_GameName)
         Tab.Name = "Tab"
         Tab.Parent = Tabs
         Tab.Active = true
-        Tab.Visible = _Visible
+        Tab.Visible = xVisible
         Tab.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
         Tab.BorderSizePixel = 0
         Tab.Size = UDim2.new(0, 438, 0, 352)
@@ -201,7 +201,7 @@ function Library:Create(_HubName,_GameName)
         Tab.ChildAdded:Connect(Size)
         Tab.ChildRemoved:Connect(Size)
 
-        if _Visible then 
+        if xVisible then 
             TabButton.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
             TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         else 
@@ -866,6 +866,6 @@ function Library:Create(_HubName,_GameName)
         end
         return Elements
     end
-    return _Tabs
+    return xTabs
 end
 return Library
