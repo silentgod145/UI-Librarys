@@ -10,9 +10,51 @@ function Library:Toggle()
     end
 end
 
-function Library:Create(_HubName,_GameName)
-    local HubName = HubName or "UI Library"
-    local GameName = GameName or "By Mapple#3045"
+function Library:Drag(obj)
+    local UserInputService = game:GetService("UserInputService")
+	
+	local gui = obj
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+    end)
+end
+
+function Library:Create(xHubName,xGameName)
+    local xHubName = xHubName or "UI Library"
+    local xGameName = xGameName or "By Mapple#3045"
     local ScreenGui = Instance.new("ScreenGui")
     local Main = Instance.new("Frame")
     local MainCorner = Instance.new("UICorner")
@@ -66,7 +108,7 @@ function Library:Create(_HubName,_GameName)
     HubName.Position = UDim2.new(0, 0, 0.024324324, 0)
     HubName.Size = UDim2.new(0, 140, 0, 21)
     HubName.Font = Enum.Font.Gotham
-    HubName.Text = _HubName
+    HubName.Text = xHubName
     HubName.TextColor3 = Color3.fromRGB(255, 255, 255)
     HubName.TextSize = 16.000
 
@@ -104,7 +146,7 @@ function Library:Create(_HubName,_GameName)
     GameName.Position = UDim2.new(-0.00714285718, 0, 0.0810810775, 0)
     GameName.Size = UDim2.new(0, 141, 0, 25)
     GameName.Font = Enum.Font.Gotham
-    GameName.Text = _GameName
+    GameName.Text = xGameName
     GameName.TextColor3 = Color3.fromRGB(190, 190, 190)
     GameName.TextSize = 14.000
 
@@ -119,46 +161,7 @@ function Library:Create(_HubName,_GameName)
     Tabs.Name = "Tabs"
     Tabs.Parent = TabHolder
 
-    local UserInputService = game:GetService("UserInputService")
-	
-	local gui = Main
-	
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-	
-	local function update(input)
-		local delta = input.Position - dragStart
-		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
-	
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-	
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-	
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	
-	UserInputService.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			update(input)
-		end
-    end)
-
+    Library:Drag(Main)
 
     local xTabs = {}
     
