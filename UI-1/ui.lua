@@ -342,7 +342,7 @@ function Library:Create(xHubName,xGameName)
             local ToggleName = Instance.new("TextLabel")
             local ToggleNamePadding = Instance.new("UIPadding")
             local ToggleFrameCorner = Instance.new("UICorner")
-            local Toggle = Instance.new("Frame")
+            local Togglex = Instance.new("Frame")
             local ToggleCorner = Instance.new("UICorner")
             local ToggleCircle = Instance.new("ImageLabel")
             local ToggleButton = Instance.new("TextButton")
@@ -372,11 +372,11 @@ function Library:Create(xHubName,xGameName)
             ToggleFrameCorner.Name = "ToggleFrameCorner"
             ToggleFrameCorner.Parent = ToggleFrame
 
-            Toggle.Name = "Toggle"
-            Toggle.Parent = ToggleFrame
-            Toggle.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-            Toggle.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
-            Toggle.Size = UDim2.new(0, 45, 0, 23)
+            Togglex.Name = "Toggle"
+            Togglex.Parent = ToggleFrame
+            Togglex.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
+            Togglex.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
+            Togglex.Size = UDim2.new(0, 45, 0, 23)
 
             ToggleCorner.CornerRadius = UDim.new(0, 25)
             ToggleCorner.Name = "ToggleCorner"
@@ -404,17 +404,16 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.Text = ""
             ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
             ToggleButton.TextSize = 14.000
-            ToggleButton.ZIndex = 5
 
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                     }):Play() 
                     ToggleCircle:TweenPosition(UDim2.new(0.559444427, 0, 0.153043509, 0))
                 else
-                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         BackgroundColor3 = Color3.fromRGB(55, 55, 75)
                     }):Play() 
                     ToggleCircle:TweenPosition(UDim2.new(0.0927777439, 0, 0.153043509, 0))
@@ -464,7 +463,7 @@ function Library:Create(xHubName,xGameName)
             SliderTrail.Name = "SliderTrail"
             SliderTrail.Parent = SliderButton
             SliderTrail.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-            SliderTrail.Size = UDim2.new(0, 23, 0, 0)
+            SliderTrail.Size = UDim2.new(0, 0, 0, 10)
             SliderTrail.BorderSizePixel = 0
 
             SliderTrailCorner.Name = "SliderTrailCorner"
@@ -641,7 +640,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButton.Position = UDim2.new(0.610294104, 0, 0.171428576, 0)
             KeybindButton.Size = UDim2.new(0, 150, 0, 23)
             KeybindButton.Font = Enum.Font.Gotham
-            KeybindButton.Text = "Key"
+            KeybindButton.Text = zKey
             KeybindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
             KeybindButton.TextSize = 14.000
             
@@ -649,7 +648,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
-                KeybindButton.Text = "..."
+                KeybindButton.Text = ". . ."
                 local i, x = game:GetService('UserInputService').InputBegan:wait();
                 if i.KeyCode.Name ~= "Unknown" then
                     KeybindButton.Text = i.KeyCode.Name
@@ -758,6 +757,7 @@ function Library:Create(xHubName,xGameName)
                 if opened then 
                     Size()
                     opened = false 
+                    DropList.Visible = true
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                     wait(0.1)
                     game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
@@ -769,6 +769,7 @@ function Library:Create(xHubName,xGameName)
                     DropList:TweenSize(UDim2.new(0, 408, 0, DropListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.1)
                     Size()
                     wait(0.1)
+                    DropList.Visible = false
                     Size()
                     game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(55, 74, 251)
@@ -805,6 +806,7 @@ function Library:Create(xHubName,xGameName)
                     opened = false 
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                     wait(0.1)
+                    DropList.Visible = false
                     game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
@@ -849,6 +851,7 @@ function Library:Create(xHubName,xGameName)
                         opened = false 
                         DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                         wait(0.1)
+                        DropList.Visible = false
                         game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             ImageColor3 = Color3.fromRGB(255,255,255)
                         }):Play()
