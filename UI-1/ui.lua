@@ -408,15 +408,11 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-                    }):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0.559444427, 0, 0.153043509, 0))
+                    game:GetService("TweenService"):Create(Togglex, TweenInfo(0.5), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
+                    ToggleCircle:TweenPosition(Vector2.new(0.559444427, 0, 0.153043509, 0))
                 else
-                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-                    }):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0.0927777439, 0, 0.153043509, 0))
+                    game:GetService("TweenService"):Create(Togglex, TweenInfo(0.5), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
+                    ToggleCircle:TweenPosition(Vector2.new(0.0927777439, 0, 0.153043509, 0))
                 end
                 pcall(Callback,ToggleEnabled)
             end)
@@ -757,20 +753,19 @@ function Library:Create(xHubName,xGameName)
                 if opened then 
                     Size()
                     opened = false 
-                    DropList.Visible = true
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                     wait(0.1)
                     game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
+                    DropList.Visible = true
                     Size()
                 else 
                     opened = true 
+                    DropList.Visible = true
                     DropList:TweenSize(UDim2.new(0, 408, 0, DropListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.1)
                     Size()
                     wait(0.1)
-                    DropList.Visible = false
-                    Size()
                     game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(55, 74, 251)
                     }):Play()
@@ -806,10 +801,10 @@ function Library:Create(xHubName,xGameName)
                     opened = false 
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                     wait(0.1)
-                    DropList.Visible = false
                     game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
+                    DropList.Visible = false
                     Size()
                 end)
 
@@ -851,10 +846,10 @@ function Library:Create(xHubName,xGameName)
                         opened = false 
                         DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                         wait(0.1)
-                        DropList.Visible = false
                         game.TweenService:Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             ImageColor3 = Color3.fromRGB(255,255,255)
                         }):Play()
+                        DropList.Visible = false
                         Size()
                     end)
     
