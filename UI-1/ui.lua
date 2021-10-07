@@ -387,7 +387,7 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
             ToggleCircle.Position = UDim2.new(0.0927777439, 0, 0.153043509, 0)
-            ToggleCircle.Size = UDim2.new(0, 15, 0, 15)
+            ToggleCircle.Size = UDim2.new(0, 17, 0, 17)
             ToggleCircle.Image = "rbxassetid://3570695787"
             ToggleCircle.ScaleType = Enum.ScaleType.Slice
             ToggleCircle.SliceCenter = Rect.new(100, 100, 100, 100)
