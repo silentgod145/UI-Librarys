@@ -10,6 +10,48 @@ function Library:Toggle()
     end
 end
 
+function Library:Drag(obj)
+    local UserInputService = game:GetService("UserInputService")
+	
+	local gui = obj
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+    end)
+end
+
 function Library:Create(xHubName,xGameName)
     local xHubName = xHubName or "UI Library"
     local xGameName = xGameName or "By Mapple#3045"
@@ -37,7 +79,6 @@ function Library:Create(xHubName,xGameName)
     Main.BackgroundColor3 = Color3.fromRGB(31, 30, 46)
     Main.Position = UDim2.new(0.278277636, 0, 0.281287253, 0)
     Main.Size = UDim2.new(0, 580, 0, 370)
-    Main.ZIndex = 9999
 
     MainCorner.CornerRadius = UDim.new(0, 12)
     MainCorner.Name = "MainCorner"
@@ -118,6 +159,8 @@ function Library:Create(xHubName,xGameName)
 
     Tabs.Name = "Tabs"
     Tabs.Parent = TabHolder
+
+    Library:Drag(Main)
 
     local xTabs = {}
     
@@ -360,6 +403,7 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.Text = ""
             ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
             ToggleButton.TextSize = 14.000
+            ToggleButton.ZIndex = 5
 
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
@@ -420,6 +464,7 @@ function Library:Create(xHubName,xGameName)
             SliderTrail.Parent = SliderButton
             SliderTrail.BackgroundColor3 = Color3.fromRGB(55, 74, 251)
             SliderTrail.Size = UDim2.new(0, 23, 0, 0)
+            SliderTrail.BorderSizePixel = 0
 
             SliderTrailCorner.Name = "SliderTrailCorner"
             SliderTrailCorner.Parent = SliderTrail
@@ -466,22 +511,22 @@ function Library:Create(xHubName,xGameName)
                 game.TweenService:Create(SliderValue, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     TextTransparency = 0
                 }):Play()
-                Value = math.floor((((tonumber(Max) - tonumber(Min)) / 469) * SliderTrail.AbsoluteSize.X) + tonumber(Min)) or 0
+                Value = math.floor((((tonumber(Max) - tonumber(Min)) / 389) * SliderTrail.AbsoluteSize.X) + tonumber(Min)) or 0
                 pcall(function()
                     Callback(Value)
                 end)
-                SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 469), 0, 9), "InOut", "Linear", 0.05, true)
+                SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 389), 0, 9), "InOut", "Linear", 0.05, true)
                 moveconnection = mouse.Move:Connect(function()
                     SliderValue.Text = Value
-                    Value = math.floor((((tonumber(Max) - tonumber(Min)) / 469) * SliderTrail.AbsoluteSize.X) + tonumber(Min))
+                    Value = math.floor((((tonumber(Max) - tonumber(Min)) / 389) * SliderTrail.AbsoluteSize.X) + tonumber(Min))
                     pcall(function()
                         Callback(Value)
                     end)
-                    SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 469), 0, 9), "InOut", "Linear", 0.05, true)
+                    SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 389), 0, 9), "InOut", "Linear", 0.05, true)
                 end)
                 releaseconnection = uis.InputEnded:Connect(function(Mouse)
                     if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
-                        Value = math.floor((((tonumber(Max) - tonumber(Min)) / 469) * SliderTrail.AbsoluteSize.X) + tonumber(Min))
+                        Value = math.floor((((tonumber(Max) - tonumber(Min)) / 389) * SliderTrail.AbsoluteSize.X) + tonumber(Min))
                         pcall(function()
                             Callback(Value)
                         end)
@@ -489,7 +534,7 @@ function Library:Create(xHubName,xGameName)
                         game.TweenService:Create(SliderValue, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             TextTransparency = 1
                         }):Play()
-                        SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 469), 0, 9), "InOut", "Linear", 0.05, true)
+                        SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 389), 0, 9), "InOut", "Linear", 0.05, true)
                         moveconnection:Disconnect()
                         releaseconnection:Disconnect()
                     end
@@ -553,10 +598,10 @@ function Library:Create(xHubName,xGameName)
             end)
         end
 
-        function Elements:Keybind(Name,Key,Callback)
+        function Elements:Keybind(Name,xKey,Callback)
             local Name = Name or "Keybind"
             local Callback = Callback or function() end
-            local _Key = Key.Name
+            local zKey = xKey.Name
             local KeybindFrame = Instance.new("Frame")
             local KeybindFrameCorner = Instance.new("UICorner")
             local KeybindName = Instance.new("TextLabel")
@@ -607,13 +652,13 @@ function Library:Create(xHubName,xGameName)
                 local i, x = game:GetService('UserInputService').InputBegan:wait();
                 if i.KeyCode.Name ~= "Unknown" then
                     KeybindButton.Text = i.KeyCode.Name
-                    _Key = i.KeyCode.Name;
+                    zKey = i.KeyCode.Name;
                 end
             end)
     
             game:GetService("UserInputService").InputBegan:connect(function(a, b) 
                 if not a then 
-                    if b.KeyCode.Name == _Key then 
+                    if b.KeyCode.Name == zKey then 
                         Callback()
                     end
                 end
@@ -828,4 +873,3 @@ function Library:Create(xHubName,xGameName)
     return xTabs
 end
 return Library
-      
