@@ -1,3 +1,4 @@
+
 local Library = {}
 -- Random UI Name
 local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
@@ -12,43 +13,43 @@ end
 
 function Library:Drag(obj)
     local UserInputService = game:GetService("UserInputService")
-	
-	local gui = obj
-	
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-	
-	local function update(input)
-		local delta = input.Position - dragStart
-		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
-	
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-	
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-	
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	
-	UserInputService.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			update(input)
-		end
+    
+    local gui = obj
+    
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+    
+    local function update(input)
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+    
+    gui.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+    
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    
+    gui.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            update(input)
+        end
     end)
 end
 
@@ -396,7 +397,7 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.Parent = Toggle
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
-            ToggleCircle.Position = UDim2.new(0.0927777439, 0, 0.153043509, 0)
+            ToggleCircle.Position = UDim2.new(0,5,0,3)
             ToggleCircle.Size = UDim2.new(0, 17, 0, 17)
             ToggleCircle.Image = "rbxassetid://3570695787"
             ToggleCircle.ScaleType = Enum.ScaleType.Slice
@@ -404,7 +405,7 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.SliceScale = 0.120
 
             ToggleButton.Name = "ToggleButton"
-            ToggleButton.Parent = Frame
+            ToggleButton.Parent = Togglex
             ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleButton.BackgroundTransparency = 1.000
             ToggleButton.BorderSizePixel = 0
@@ -417,11 +418,11 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(Togglex, TweenInfo(0.5), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
-                    ToggleCircle:TweenPosition(Vector2.new(0.559444427, 0, 0.153043509, 0))
+                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
+                    ToggleCircle:TweenPosition(UDim2.new(0,5,0,3))
                 else
-                    game:GetService("TweenService"):Create(Togglex, TweenInfo(0.5), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
-                    ToggleCircle:TweenPosition(Vector2.new(0.0927777439, 0, 0.153043509, 0))
+                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
+                    ToggleCircle:TweenPosition(UDim2.new(1,-24,0,3))
                 end
                 pcall(Callback,ToggleEnabled)
             end)
@@ -602,7 +603,7 @@ function Library:Create(xHubName,xGameName)
             TextboxCorner.Name = "TextboxCorner"
             TextboxCorner.Parent = Textbox
 
-            Textbox.MouseButton1Down:Connect(function()
+            Textbox.Focused:Connect(function()
                 game:GetService("TweenService"):Create(Textbox, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
@@ -619,7 +620,7 @@ function Library:Create(xHubName,xGameName)
         function Elements:Keybind(Name,xKey,Callback)
             local Name = Name or "Keybind"
             local Callback = Callback or function() end
-            local zKey = xKey.Name
+            local Keyx = xKey.Name
             local KeybindFrame = Instance.new("Frame")
             local KeybindFrameCorner = Instance.new("UICorner")
             local KeybindName = Instance.new("TextLabel")
@@ -658,7 +659,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButton.Position = UDim2.new(0.610294104, 0, 0.171428576, 0)
             KeybindButton.Size = UDim2.new(0, 150, 0, 23)
             KeybindButton.Font = Enum.Font.Gotham
-            KeybindButton.Text = zKey
+            KeybindButton.Text = Keyx
             KeybindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
             KeybindButton.TextSize = 14.000
             
@@ -666,23 +667,23 @@ function Library:Create(xHubName,xGameName)
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
-                game:GetService("TweenService"):Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
                 KeybindButton.Text = ". . ."
-                local i, x = game:GetService('UserInputService').InputBegan:wait();
-                if i.KeyCode.Name ~= "Unknown" then
-                    KeybindButton.Text = i.KeyCode.Name
-                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                local v1, v2 = game:GetService('UserInputService').InputBegan:wait();
+                if v1.KeyCode.Name ~= "Unknown" then
+                    game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         BackgroundColor3 = Color3.fromRGB(55, 55, 75)
                     }):Play()
-                    zKey = i.KeyCode.Name;
+                    KeybindButton.Text = v1.KeyCode.Name
+                    Keyx = v1.KeyCode.Name;
                 end
             end)
     
-            game:GetService("UserInputService").InputBegan:connect(function(a, b) 
-                if not a then 
-                    if b.KeyCode.Name == zKey then 
+            game:GetService("UserInputService").InputBegan:connect(function(a, gp) 
+                if not gp then 
+                    if a.KeyCode.Name == Keyx then 
                         Callback()
                     end
                 end
