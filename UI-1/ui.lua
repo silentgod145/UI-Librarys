@@ -1,4 +1,3 @@
-
 local Library = {}
 -- Random UI Name
 local LibraryName = tostring(math.random(100000,200000))..tostring(math.random(100000,200000))..tostring(math.random(100000,200000))
@@ -391,10 +390,10 @@ function Library:Create(xHubName,xGameName)
 
             ToggleCorner.CornerRadius = UDim.new(0, 25)
             ToggleCorner.Name = "ToggleCorner"
-            ToggleCorner.Parent = Toggle
+            ToggleCorner.Parent = Togglex
 
             ToggleCircle.Name = "ToggleCircle"
-            ToggleCircle.Parent = Toggle
+            ToggleCircle.Parent = Togglex
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
             ToggleCircle.Position = UDim2.new(0,5,0,3)
