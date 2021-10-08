@@ -352,7 +352,6 @@ function Library:Create(xHubName,xGameName)
             local ToggleName = Instance.new("TextLabel")
             local ToggleNamePadding = Instance.new("UIPadding")
             local ToggleFrameCorner = Instance.new("UICorner")
-            local Togglex = Instance.new("Frame")
             local ToggleCorner = Instance.new("UICorner")
             local ToggleCircle = Instance.new("ImageLabel")
             local ToggleButton = Instance.new("TextButton")
@@ -382,15 +381,21 @@ function Library:Create(xHubName,xGameName)
             ToggleFrameCorner.Name = "ToggleFrameCorner"
             ToggleFrameCorner.Parent = ToggleFrame
 
-            Togglex.Name = "Toggle"
-            Togglex.Parent = ToggleFrame
-            Togglex.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-            Togglex.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
-            Togglex.Size = UDim2.new(0, 45, 0, 23)
+            ToggleButton.Name = "ToggleButton"
+            ToggleButton.Parent = 
+            ToggleButton.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
+            ToggleButton.BackgroundTransparency = 0
+            ToggleButton.BorderSizePixel = 0
+            ToggleButton.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
+            ToggleButton.Size = UDim2.new(0, 45, 0, 23)
+            ToggleButton.Font = Enum.Font.SourceSans
+            ToggleButton.Text = ""
+            ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+            ToggleButton.TextSize = 14.000
 
             ToggleCorner.CornerRadius = UDim.new(0, 25)
             ToggleCorner.Name = "ToggleCorner"
-            ToggleCorner.Parent = Togglex
+            ToggleCorner.Parent = ToggleButton
 
             ToggleCircle.Name = "ToggleCircle"
             ToggleCircle.Parent = Togglex
@@ -403,24 +408,13 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.SliceCenter = Rect.new(100, 100, 100, 100)
             ToggleCircle.SliceScale = 0.120
 
-            ToggleButton.Name = "ToggleButton"
-            ToggleButton.Parent = Togglex
-            ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            ToggleButton.BackgroundTransparency = 1.000
-            ToggleButton.BorderSizePixel = 0
-            ToggleButton.Size = UDim2.new(0, 45, 0, 23)
-            ToggleButton.Font = Enum.Font.SourceSans
-            ToggleButton.Text = ""
-            ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-            ToggleButton.TextSize = 14.000
-
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
                     ToggleCircle:TweenPosition(UDim2.new(0.559, 0,0.153, 0))
                 else
-                    game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
                     ToggleCircle:TweenPosition(UDim2.new(0.093, 0,0.153, 0))
                 end
                 pcall(Callback,ToggleEnabled)
