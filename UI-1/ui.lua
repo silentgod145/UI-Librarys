@@ -396,7 +396,7 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.Parent = Togglex
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
-            ToggleCircle.Position = UDim2.new(0,5,0,3)
+            ToggleCircle.Position = UDim2.new(0.559, 0,0.153, 0)
             ToggleCircle.Size = UDim2.new(0, 17, 0, 17)
             ToggleCircle.Image = "rbxassetid://3570695787"
             ToggleCircle.ScaleType = Enum.ScaleType.Slice
@@ -408,7 +408,7 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleButton.BackgroundTransparency = 1.000
             ToggleButton.BorderSizePixel = 0
-            ToggleButton.Size = UDim2.new(0, 408, 0, 35)
+            ToggleButton.Size = UDim2.new(0, 45, 0, 23)
             ToggleButton.Font = Enum.Font.SourceSans
             ToggleButton.Text = ""
             ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -418,10 +418,10 @@ function Library:Create(xHubName,xGameName)
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
                     game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0,5,0,3))
+                    ToggleCircle:TweenPosition(UDim2.new(0.559, 0,0.153, 0))
                 else
                     game:GetService("TweenService"):Create(Togglex, TweenInfo.new(0.5), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(1,-24,0,3))
+                    ToggleCircle:TweenPosition(UDim2.new(0.093, 0,0.153, 0))
                 end
                 pcall(Callback,ToggleEnabled)
             end)
