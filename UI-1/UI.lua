@@ -399,7 +399,6 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
             ToggleButton.BackgroundTransparency = 1
             ToggleButton.BorderSizePixel = 0
-            ToggleButton.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
             ToggleButton.Size = UDim2.new(0, 45, 0, 23)
             ToggleButton.Font = Enum.Font.SourceSans
             ToggleButton.Text = ""
