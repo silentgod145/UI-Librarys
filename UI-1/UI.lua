@@ -419,11 +419,11 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
-                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.1), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
                 else
-                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
-                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.1), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
                 end
                 pcall(Callback,ToggleEnabled)
             end)
@@ -691,7 +691,7 @@ function Library:Create(xHubName,xGameName)
             end)
         end
 
-        function Elements:Dropdown(Name,List,Callback)
+        function Elements:Dropdown(Name,Listx,Callback)
             local Name = Name or "Dropdown"
             local DropdownFunction = {}
             local Callback = Callback or function() end
@@ -815,11 +815,9 @@ function Library:Create(xHubName,xGameName)
                 end 
             end)  
 
-            for i,v in pairs(List:GetChildren()) do 
+            for i,v in pairs(Listx:GetChildren()) do 
                 local Option = Instance.new("TextButton")
                 local OptionCorner = Instance.new("UICorner")
-
-                DropSize = DropSize + 35
 
                 Option.Name = tostring(v).."_Option"
                 Option.Parent = DropList
