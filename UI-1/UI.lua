@@ -52,6 +52,25 @@ function Library:Drag(obj)
     end)
 end
 
+function Library:RippleClick(obj)
+    local m = LocalPlayer:GetMouse()
+    local Effect = Instance.new("ImageLabel")
+    Effect.Name = "Effect"
+    Effect.Parent = obj
+    Effect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Effect.BackgroundTransparency = 1.000
+    Effect.ZIndex = 100
+    Effect.Image = "rbxassetid://2708891598"
+    Effect.ImageTransparency = 0.750
+    Effect.ScaleType = Enum.ScaleType.Fit
+    Ripple.Position = UDim2.new((m.X - Effect.AbsolutePosition.X) / obj.AbsoluteSize.X, 0, (m.Y - Effect.AbsolutePosition.Y) / obj.AbsoluteSize.Y, 0)
+    game:GetService("TweenService"):Create(Effect, TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-5.5, 0, -5.5, 0), Size = UDim2.new(12, 0, 12, 0)}):Play()
+    wait(0.5)
+    game:GetService("TweenService"):Create(Effect, TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
+    wait(1)
+    Effect:Destroy()
+end
+
 function Library:Create(xHubName,xGameName)
     local xHubName = xHubName or "UI Library"
     local xGameName = xGameName or "By Mapple#3045"
@@ -212,6 +231,7 @@ function Library:Create(xHubName,xGameName)
         end
 
         TabButton.MouseButton1Down:Connect(function()
+            Library:RippleClick(TabButton)
             Size()
             for i,v in pairs(ActualSide:GetChildren()) do 
                 if v:IsA("TextButton") then 
@@ -316,6 +336,7 @@ function Library:Create(xHubName,xGameName)
             ButtonPadding.PaddingLeft = UDim.new(0, 10)
 
             Button.MouseButton1Down:Connect(function()
+                Library:RippleClick(Button)
                 game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
@@ -516,9 +537,6 @@ function Library:Create(xHubName,xGameName)
             local mouse = game:GetService("Players").LocalPlayer:GetMouse();
 
             SliderButton.MouseButton1Down:Connect(function()
-                game:GetService("TweenService"):Create(SliderButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                    BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-                }):Play()
                 game:GetService("TweenService"):Create(SliderValue, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     TextTransparency = 0
                 }):Play()
@@ -668,6 +686,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
+                Library:RippleClick(KeybindButton)
                 game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
