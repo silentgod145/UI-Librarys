@@ -774,6 +774,14 @@ function Library:Create(xHubName,xGameName)
                     BackgroundColor3 = Color3.fromRGB(40, 42, 60)
                 }):Play()
             end)
+            
+            local function UpdateElements(Vis)
+                for i,v in pairs(Tab:GetChildren()) do 
+                    if v:IsA("Frame") and v ~= DropdownFrame then 
+                        v.Visible = Vis
+                    end
+                end
+            end
 
             DropdownButton.MouseButton1Down:Connect(function()
                 if opened then 
@@ -784,7 +792,7 @@ function Library:Create(xHubName,xGameName)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
-                    DropList.Visible = true
+                    DropList.Visible = false
                     Size()
                 else 
                     opened = true 
