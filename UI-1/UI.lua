@@ -783,14 +783,6 @@ function Library:Create(xHubName,xGameName)
                 }):Play()
             end)
 
-            local function UpdateElements(Vis)
-                for i,v in pairs(Tab:GetChildren()) do 
-                    if v:IsA("Frame") and v ~= DropdownFrame then 
-                        v.Visible = Vis
-                    end
-                end
-            end
-
             DropdownButton.MouseButton1Down:Connect(function()
                 if opened then 
                     Size()
