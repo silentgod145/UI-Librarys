@@ -59,7 +59,7 @@ function Library:RippleClick(obj)
     Effect.Parent = obj
     Effect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Effect.BackgroundTransparency = 1.000
-    Effect.ZIndex = 0
+    Effect.ZIndex = 2
     Effect.Image = "rbxassetid://2708891598"
     Effect.ImageTransparency = 0.750
     Effect.ScaleType = Enum.ScaleType.Fit
@@ -217,6 +217,7 @@ function Library:Create(xHubName,xGameName)
         TabButton.Text = Name
         TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         TabButton.TextSize = 14.000
+        TabButton.ZIndex = 2
 
         Size()
         Tab.ChildAdded:Connect(Size)
@@ -231,28 +232,26 @@ function Library:Create(xHubName,xGameName)
         end
 
         TabButton.MouseButton1Down:Connect(function()
-            spawn(function()
-                Library:RippleClick(TabButton)
-                Size()
-                for i,v in pairs(ActualSide:GetChildren()) do 
-                    if v:IsA("TextButton") then 
-                        v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-                        v.TextColor3 = Color3.fromRGB(190, 190, 190)
-                    end
+            Library:RippleClick(TabButton)
+            Size()
+            for i,v in pairs(ActualSide:GetChildren()) do 
+                if v:IsA("TextButton") then 
+                    v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+                    v.TextColor3 = Color3.fromRGB(190, 190, 190)
                 end
+            end
 
-                for i,v in pairs(Tabs:GetChildren()) do
-                    v.Visible = false
-                end
+            for i,v in pairs(Tabs:GetChildren()) do
+                v.Visible = false
+            end
 
-                Tab.Visible = true
-                game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                    BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-                }):Play()
-                game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                    TextColor3 = Color3.fromRGB(255, 255, 255)
-                }):Play()
-            end)
+            Tab.Visible = true
+            game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+            }):Play()
+            game:GetService("TweenService"):Create(TabButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                TextColor3 = Color3.fromRGB(255, 255, 255)
+            }):Play()
         end)
 
         local Elements = {}
@@ -329,6 +328,7 @@ function Library:Create(xHubName,xGameName)
             Button.TextSize = 16.000
             Button.Text = Name
             Button.TextXAlignment = Enum.TextXAlignment.Left
+            Button.ZIndex = 2
             
             ButtonCorner.Name = "ButtonCorner"
             ButtonCorner.Parent = Button
@@ -338,17 +338,15 @@ function Library:Create(xHubName,xGameName)
             ButtonPadding.PaddingLeft = UDim.new(0, 10)
 
             Button.MouseButton1Down:Connect(function()
-                spawn(function()
-                    Library:RippleClick(Button)
-                    game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-                    }):Play()
-                    wait(0.1)
-                    game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-                    }):Play()
-                    pcall(Callback)
-                end)
+                Library:RippleClick(Button)
+                game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+                }):Play()
+                wait(0.1)
+                game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+                }):Play()
+                pcall(Callback)
             end)
 
             Button.MouseEnter:Connect(function()
@@ -441,21 +439,14 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.SliceCenter = Rect.new(100, 100, 100, 100)
             ToggleCircle.SliceScale = 0.120
 
-            local Delay = false
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
-                if ToggleEnabled and Delay == false then 
-                    Delay = true
+                if ToggleEnabled then 
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
-                    wait(1)
-                    Delay = false
                 else
-                    Delay = true
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
-                    wait(1)
-                    Delay = false
                 end
                 pcall(Callback,ToggleEnabled)
             end)
@@ -692,26 +683,25 @@ function Library:Create(xHubName,xGameName)
             KeybindButton.Text = Keyx
             KeybindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
             KeybindButton.TextSize = 14.000
+            KeybindButton.ZIndex = 2
             
             KeybindButtonCorner.Name = "KeybindButtonCorner"
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
-                spawn(function()
-                    Library:RippleClick(KeybindButton)
+                Library:RippleClick(KeybindButton)
+                game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+                }):Play()
+                KeybindButton.Text = ". . ."
+                local v1, v2 = game:GetService('UserInputService').InputBegan:wait();
+                if v1.KeyCode.Name ~= "Unknown" then
                     game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+                        BackgroundColor3 = Color3.fromRGB(55, 55, 75)
                     }):Play()
-                    KeybindButton.Text = ". . ."
-                    local v1, v2 = game:GetService('UserInputService').InputBegan:wait();
-                    if v1.KeyCode.Name ~= "Unknown" then
-                        game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                            BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-                        }):Play()
-                        KeybindButton.Text = v1.KeyCode.Name
-                        Keyx = v1.KeyCode.Name;
-                    end
-                end)
+                    KeybindButton.Text = v1.KeyCode.Name
+                    Keyx = v1.KeyCode.Name;
+                end
             end)
     
             game:GetService("UserInputService").InputBegan:connect(function(a, gp) 
