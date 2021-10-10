@@ -53,17 +53,17 @@ function Library:Drag(obj)
 end
 
 function RippleClick(obj)
-    local m = LocalPlayer:GetMouse()
+    local m = game:GetService("Players").LocalPlayer:GetMouse()
     local Effect = Instance.new("ImageLabel")
     Effect.Name = "Effect"
     Effect.Parent = obj
     Effect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Effect.BackgroundTransparency = 1.000
-    Effect.ZIndex = 5
+    Effect.ZIndex = 
     Effect.Image = "rbxassetid://2708891598"
     Effect.ImageTransparency = 0.750
     Effect.ScaleType = Enum.ScaleType.Fit
-    Ripple.Position = UDim2.new((m.X - Effect.AbsolutePosition.X) / obj.AbsoluteSize.X, 0, (m.Y - Effect.AbsolutePosition.Y) / obj.AbsoluteSize.Y, 0)
+    Effect.Position = UDim2.new((m.X - Effect.AbsolutePosition.X) / obj.AbsoluteSize.X, 0, (m.Y - Effect.AbsolutePosition.Y) / obj.AbsoluteSize.Y, 0)
     game:GetService("TweenService"):Create(Effect, TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-5.5, 0, -5.5, 0), Size = UDim2.new(12, 0, 12, 0)}):Play()
     wait(0.5)
     game:GetService("TweenService"):Create(Effect, TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
