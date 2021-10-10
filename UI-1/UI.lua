@@ -838,20 +838,19 @@ function Library:Create(xHubName,xGameName)
                 Option.MouseButton1Down:Connect(function()
                     Size()
                     opened = false 
-                    DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
-                    game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        ImageColor3 = Color3.fromRGB(255,255,255)
-                    }):Play()
-                    wait(0.1)
                     for i,x in pairs(DropList:GetChildren()) do 
                         if x:IsA("TextButton") then 
-                            game:GetService("TweenService"):Create(x, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                                BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-                            }):Play()
+                            x.TextColor3 = Color3.fromRGB(40, 42, 60)
                         end 
                     end
                     game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+                        TextColor3 = Color3.fromRGB(55, 74, 251)
+                    }):Play()
+                    
+                    wait(0.1)
+                    DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
+                    game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                        ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
                     DropElements(true)
                     DropList.Visible = false
@@ -895,20 +894,19 @@ function Library:Create(xHubName,xGameName)
                     Option.MouseButton1Down:Connect(function()
                         Size()
                         opened = false 
-                        DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
-                        game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                            ImageColor3 = Color3.fromRGB(255,255,255)
-                        }):Play()
-                        wait(0.1)
                         for i,x in pairs(DropList:GetChildren()) do 
                             if x:IsA("TextButton") then 
-                                game:GetService("TweenService"):Create(x, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                                    BackgroundColor3 = Color3.fromRGB(40, 42, 60)
-                                }):Play()
+                                x.TextColor3 = Color3.fromRGB(40, 42, 60)
                             end 
                         end
                         game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                            BackgroundColor3 = Color3.fromRGB(55, 74, 251)
+                            TextColor3 = Color3.fromRGB(55, 74, 251)
+                        }):Play()
+                        
+                        wait(0.1)
+                        DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
+                        game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                            ImageColor3 = Color3.fromRGB(255,255,255)
                         }):Play()
                         DropElements(true)
                         DropList.Visible = false
