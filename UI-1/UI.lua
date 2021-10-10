@@ -59,7 +59,7 @@ function RippleClick(obj)
     Effect.Parent = obj
     Effect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Effect.BackgroundTransparency = 1.000
-    Effect.ZIndex = 
+    Effect.ZIndex = 8
     Effect.Image = "rbxassetid://2708891598"
     Effect.ImageTransparency = 0.750
     Effect.ScaleType = Enum.ScaleType.Fit
