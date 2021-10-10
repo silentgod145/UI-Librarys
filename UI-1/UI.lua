@@ -398,7 +398,7 @@ function Library:Create(xHubName,xGameName)
             ToggleCorner.Parent = ToggleButton
 
             ToggleCircle.Name = "ToggleCircle"
-            ToggleCircle.Parent = Togglex
+            ToggleCircle.Parent = ToggleButton
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
             ToggleCircle.Position = UDim2.new(0.559, 0,0.153, 0)
