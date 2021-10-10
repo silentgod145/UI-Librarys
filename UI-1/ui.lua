@@ -382,7 +382,7 @@ function Library:Create(xHubName,xGameName)
             ToggleFrameCorner.Parent = ToggleFrame
 
             ToggleButton.Name = "ToggleButton"
-            ToggleButton.Parent = 
+            ToggleButton.Parent = ToggleFrame
             ToggleButton.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
             ToggleButton.BackgroundTransparency = 0
             ToggleButton.BorderSizePixel = 0
@@ -774,7 +774,7 @@ function Library:Create(xHubName,xGameName)
                     BackgroundColor3 = Color3.fromRGB(40, 42, 60)
                 }):Play()
             end)
-            
+
             local function UpdateElements(Vis)
                 for i,v in pairs(Tab:GetChildren()) do 
                     if v:IsA("Frame") and v ~= DropdownFrame then 
