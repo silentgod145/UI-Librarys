@@ -52,14 +52,14 @@ function Library:Drag(obj)
     end)
 end
 
-function RippleClick(obj)
+function Library:RippleClick(obj)
     local m = game:GetService("Players").LocalPlayer:GetMouse()
     local Effect = Instance.new("ImageLabel")
     Effect.Name = "Effect"
     Effect.Parent = obj
     Effect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Effect.BackgroundTransparency = 1.000
-    Effect.ZIndex = 8
+    Effect.ZIndex = 0
     Effect.Image = "rbxassetid://2708891598"
     Effect.ImageTransparency = 0.750
     Effect.ScaleType = Enum.ScaleType.Fit
@@ -231,7 +231,7 @@ function Library:Create(xHubName,xGameName)
         end
 
         TabButton.MouseButton1Down:Connect(function()
-            RippleClick(TabButton)
+            Library:RippleClick(TabButton)
             Size()
             for i,v in pairs(ActualSide:GetChildren()) do 
                 if v:IsA("TextButton") then 
@@ -336,7 +336,7 @@ function Library:Create(xHubName,xGameName)
             ButtonPadding.PaddingLeft = UDim.new(0, 10)
 
             Button.MouseButton1Down:Connect(function()
-                RippleClick(Button)
+                Library:RippleClick(Button)
                 game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
@@ -693,7 +693,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
-                RippleClick(KeybindButton)
+                Library:RippleClick(KeybindButton)
                 game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
