@@ -52,7 +52,7 @@ function Library:Drag(obj)
     end)
 end
 
-function Library:RippleClick(obj)
+function RippleClick(obj)
     local m = LocalPlayer:GetMouse()
     local Effect = Instance.new("ImageLabel")
     Effect.Name = "Effect"
@@ -231,7 +231,7 @@ function Library:Create(xHubName,xGameName)
         end
 
         TabButton.MouseButton1Down:Connect(function()
-            Library:RippleClick(TabButton)
+            RippleClick(TabButton)
             Size()
             for i,v in pairs(ActualSide:GetChildren()) do 
                 if v:IsA("TextButton") then 
@@ -336,7 +336,7 @@ function Library:Create(xHubName,xGameName)
             ButtonPadding.PaddingLeft = UDim.new(0, 10)
 
             Button.MouseButton1Down:Connect(function()
-                Library:RippleClick(Button)
+                RippleClick(Button)
                 game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
@@ -446,7 +446,7 @@ function Library:Create(xHubName,xGameName)
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
                     wait(1)
                     Delay = false
-                elseif Delay == false then
+                else
                     Delay = true
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
@@ -693,7 +693,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
-                Library:RippleClick(KeybindButton)
+                RippleClick(KeybindButton)
                 game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
