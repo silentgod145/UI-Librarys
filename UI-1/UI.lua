@@ -761,6 +761,7 @@ function Library:Create(xHubName,xGameName)
             DropList.ClipsDescendants = true
             DropList.Size = UDim2.new(0, 408, 0, 35)
             DropList.ZIndex = 100
+            DropList.Position = UDim2.new(0, 0, 1.14285719, 0)
             DropList.Visible = false
 
             DropListLayout.Name = "DropListLayout"
