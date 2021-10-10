@@ -385,7 +385,7 @@ function Library:Create(xHubName,xGameName)
             ToggleF.Name = "ToggleButton"
             ToggleF.Parent = ToggleFrame
             ToggleF.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-            ToggleF.BackgroundTransparency = 1
+            ToggleF.BackgroundTransparency = 0
             ToggleF.BorderSizePixel = 0
             ToggleF.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
             ToggleF.Size = UDim2.new(0, 45, 0, 23)
@@ -410,7 +410,7 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.Parent = ToggleF
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
-            ToggleCircle.Position = UDim2.new(0.559, 0,0.153, 0)
+            ToggleCircle.Position = UDim2.new(0.093, 0,0.153, 0)
             ToggleCircle.Size = UDim2.new(0, 17, 0, 17)
             ToggleCircle.Image = "rbxassetid://3570695787"
             ToggleCircle.ScaleType = Enum.ScaleType.Slice
