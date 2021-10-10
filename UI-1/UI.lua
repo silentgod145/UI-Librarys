@@ -808,7 +808,7 @@ function Library:Create(xHubName,xGameName)
                 end 
             end)  
 
-            for i,v in pairs(Listx:GetChildren()) do 
+            for i,v in pairs(Listx) do 
                 local Option = Instance.new("TextButton")
                 local OptionCorner = Instance.new("UICorner")
 
@@ -854,7 +854,7 @@ function Library:Create(xHubName,xGameName)
 
             function DropdownFunction:UpdateDropdown(List)
                 local List = List or {}
-                for i,v in pairs(List:GetChildren()) do 
+                for i,v in pairs(List) do 
                     local Option = Instance.new("TextButton")
                     local OptionCorner = Instance.new("UICorner")
     
