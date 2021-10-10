@@ -437,12 +437,15 @@ function Library:Create(xHubName,xGameName)
             ToggleCircle.SliceCenter = Rect.new(100, 100, 100, 100)
             ToggleCircle.SliceScale = 0.120
 
+            local Delay = false
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
-                if ToggleEnabled then 
+                if ToggleEnabled and Delay == false then 
+                    Delay = true
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
-                else
+                elseif Delay == false then
+                    Delay = true
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
                 end
