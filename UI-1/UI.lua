@@ -382,7 +382,7 @@ function Library:Create(xHubName,xGameName)
             ToggleFrameCorner.Name = "ToggleFrameCorner"
             ToggleFrameCorner.Parent = ToggleFrame
 
-            ToggleF.Name = "ToggleButton"
+            ToggleF.Name = "ToggleF"
             ToggleF.Parent = ToggleFrame
             ToggleF.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
             ToggleF.BackgroundTransparency = 0
@@ -421,10 +421,10 @@ function Library:Create(xHubName,xGameName)
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0.559, 0,0.153, 0),TweenInfo.new(0.1))
+                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.1), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
                 else
                     game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0.093, 0,0.153, 0),TweenInfo.new(0.1))
+                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.1), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
                 end
                 pcall(Callback,ToggleEnabled)
             end)
