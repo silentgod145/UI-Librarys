@@ -840,7 +840,7 @@ function Library:Create(xHubName,xGameName)
                     opened = false 
                     for i,x in pairs(DropList:GetChildren()) do 
                         if x:IsA("TextButton") then 
-                            x.TextColor3 = Color3.fromRGB(40, 42, 60)
+                            x.TextColor3 = Color3.fromRGB(255,255,255)
                         end 
                     end
                     game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
