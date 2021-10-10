@@ -20,7 +20,7 @@ end)
 
 Tab1:Dropdown("Dropdown",{"Option 1","Option 2","Option 3"},function(current)
     print(current)
-end
+end)
 
 Tab1:Toggle("Toggle",function(x)
     print(x)
