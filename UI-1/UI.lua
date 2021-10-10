@@ -790,6 +790,7 @@ function Library:Create(xHubName,xGameName)
             DropList.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
             DropList.BackgroundTransparency = 1.000
             DropList.BorderSizePixel = 0
+            DropList.ClipsDescendants = true
             DropList.Size = UDim2.new(0, 408, 0, 35)
             DropList.ZIndex = 100
             DropList.Visible = false
