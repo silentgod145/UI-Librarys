@@ -29,3 +29,11 @@ end)
 Tab1:Slider("Slider",16,500,function(s)
     print(s)
 end)
+
+local Tab2 = Window:Tab("Tab 2",false)
+
+Tab2:Label("UI")
+
+Tab2:Keybind("Toggle",Enum.KeyCode.RightShift,function()
+    Library:Toggle()
+end)
