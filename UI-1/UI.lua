@@ -849,7 +849,7 @@ function Library:Create(xHubName,xGameName)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
-                    wait(1)
+                    wait(0.1)
                     DropList.Visible = false
                     opened = false
                     DropElements(true)
