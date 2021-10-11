@@ -52,6 +52,42 @@ function Library:Drag(obj)
     end)
 end
 
+function Library:Ripple(obj)
+    spawn(function()
+        local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+		local rippleEffect = Instance.new("ImageLabel")
+		local rippleEffectInner = Instance.new("ImageLabel")
+
+		rippleEffect.Name = "rippleEffect"
+        rippleEffect.Parent = obj 
+		rippleEffect.BackgroundTransparency = 1
+		rippleEffect.BorderSizePixel = 0
+		rippleEffect.Image = "rbxassetid://2708891598"
+		rippleEffect.ImageColor3 = Color3.fromRGB(244, 244, 244)
+		rippleEffect.ImageTransparency = 0.7
+		rippleEffect.ScaleType = Enum.ScaleType.Fit
+
+		rippleEffectInner.Name = "rippleEffect"
+        rippleEffectInner.Parent = rippleEffect
+		rippleEffectInner.AnchorPoint = Vector2.new(0.5, 0.5)
+		rippleEffectInner.BackgroundTransparency = 1
+		rippleEffectInner.BorderSizePixel = 0
+		rippleEffectInner.Position = UDim2.new(0.5, 0, 0.5, 0)
+		rippleEffectInner.Size = UDim2.new(0.93, 0, 0.93, 0)
+		rippleEffectInner.Image = "rbxassetid://2708891598"
+		rippleEffectInner.ImageColor3 = fromRGB(45, 45, 45)
+		rippleEffectInner.ImageTransparency = 0.7
+		rippleEffectInner.ScaleType = Enum.ScaleType.Fit
+		rippleEffect.Position = UDim2.new(0, mouse.X - rippleEffect.AbsolutePosition.X, 0, mouse.Y - rippleEffect.AbsolutePosition.Y)
+		rippleEffect:TweenSizeAndPosition(UDim2.new(10, 0, 10, 0), UDim2.new(-4.5, 0, -4.5, 0), "Out", "Quad", 0.33)
+		for i = 1, 10 do
+			rippleEffect.ImageTransparency = rippleEffect.ImageTransparency + 0.01
+			wait()
+		end
+		rippleEffect:Destroy()
+	end)
+end
+
 function Library:Create(xHubName,xGameName)
     local xHubName = xHubName or "UI Library"
     local xGameName = xGameName or "By Mapple#3045"
@@ -214,6 +250,7 @@ function Library:Create(xHubName,xGameName)
 
         TabButton.MouseButton1Down:Connect(function()
             Size()
+            Library:Ripple(TabButton)
             for i,v in pairs(ActualSide:GetChildren()) do 
                 if v:IsA("TextButton") then 
                     v.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
@@ -318,6 +355,7 @@ function Library:Create(xHubName,xGameName)
             ButtonPadding.PaddingLeft = UDim.new(0, 10)
 
             Button.MouseButton1Down:Connect(function()
+                Library:Ripple(Button)
                 game:GetService("TweenService"):Create(Button, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
@@ -668,6 +706,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButtonCorner.Parent = KeybindButton
 
             KeybindButton.MouseButton1Click:connect(function() 
+                Library:Ripple(KeybindButton)
                 game.TweenService:Create(KeybindButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     BackgroundColor3 = Color3.fromRGB(55, 74, 251)
                 }):Play()
