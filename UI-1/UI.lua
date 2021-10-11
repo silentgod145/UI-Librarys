@@ -842,7 +842,7 @@ function Library:Create(xHubName,xGameName)
                             b.TextColor3 = Color3.fromRGB(255,255,255)
                         end 
                     end
-                    game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         TextColor3 = Color3.fromRGB(55, 74, 251)
                     }):Play()
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
@@ -895,7 +895,7 @@ function Library:Create(xHubName,xGameName)
                                 b.TextColor3 = Color3.fromRGB(255,255,255)
                             end 
                         end
-                        game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                        game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             TextColor3 = Color3.fromRGB(55, 74, 251)
                         }):Play()
                         DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
