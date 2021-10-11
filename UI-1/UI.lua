@@ -837,9 +837,9 @@ function Library:Create(xHubName,xGameName)
 
                 Option.MouseButton1Down:Connect(function()
                     Callback(v)
-                    for i,v in pairs(DropList:GetChildren()) do 
-                        if v:IsA("TextButton") then 
-                            v.TextColor3 = Color3.fromRGB(255,255,255)
+                    for a,b in pairs(DropList:GetChildren()) do 
+                        if b:IsA("TextButton") then 
+                            b.TextColor3 = Color3.fromRGB(255,255,255)
                         end 
                     end
                     game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
@@ -890,9 +890,9 @@ function Library:Create(xHubName,xGameName)
     
                     Option.MouseButton1Down:Connect(function()
                         Callback(v)
-                        for i,v in pairs(DropList:GetChildren()) do 
-                            if v:IsA("TextButton") then 
-                                v.TextColor3 = Color3.fromRGB(255,255,255)
+                        for a,b in pairs(DropList:GetChildren()) do 
+                            if b:IsA("TextButton") then 
+                                b.TextColor3 = Color3.fromRGB(255,255,255)
                             end 
                         end
                         game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
