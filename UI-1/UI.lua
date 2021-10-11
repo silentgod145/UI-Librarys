@@ -836,27 +836,24 @@ function Library:Create(xHubName,xGameName)
                 OptionCorner.Parent = Option
 
                 Option.MouseButton1Down:Connect(function()
-                    Size()
-                    opened = false 
-                    for i,x in pairs(DropList:GetChildren()) do 
-                        if x:IsA("TextButton") then 
-                            x.TextColor3 = Color3.fromRGB(255,255,255)
+                    Callback(v)
+                    for i,v in pairs(DropList:GetChildren()) do 
+                        if v:IsA("TextButton") then 
+                            v.TextColor3 = Color3.fromRGB(255,255,255)
                         end 
                     end
                     game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         TextColor3 = Color3.fromRGB(55, 74, 251)
                     }):Play()
-                    
-                    wait(0.1)
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
-                    DropElements(true)
+                    wait(1)
                     DropList.Visible = false
-                    Tab.CanvasSize = UDim2.new(0,0,0,TabListLayout.AbsoluteContentSize.Y)
+                    opened = false
+                    DropElements(true)
                     Size()
-                    Callback(v)
                 end)
 
                 Option.MouseEnter:Connect(function()
@@ -892,27 +889,24 @@ function Library:Create(xHubName,xGameName)
                     OptionCorner.Parent = Option
     
                     Option.MouseButton1Down:Connect(function()
-                        Size()
-                        opened = false 
-                        for i,x in pairs(DropList:GetChildren()) do 
-                            if x:IsA("TextButton") then 
-                                x.TextColor3 = Color3.fromRGB(255,255,255)
+                        Callback(v)
+                        for i,v in pairs(DropList:GetChildren()) do 
+                            if v:IsA("TextButton") then 
+                                v.TextColor3 = Color3.fromRGB(255,255,255)
                             end 
                         end
                         game:GetService("TweenService"):Create(v, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             TextColor3 = Color3.fromRGB(55, 74, 251)
                         }):Play()
-                        
-                        wait(0.1)
                         DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
                         game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             ImageColor3 = Color3.fromRGB(255,255,255)
                         }):Play()
-                        DropElements(true)
+                        wait(1)
                         DropList.Visible = false
-                        Tab.CanvasSize = UDim2.new(0,0,0,TabListLayout.AbsoluteContentSize.Y)
+                        opened = false
+                        DropElements(true)
                         Size()
-                        Callback(v)
                     end)
     
                     Option.MouseEnter:Connect(function()
