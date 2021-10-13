@@ -752,7 +752,7 @@ function Library:Create(HubName,GameName)
             DropListLayout.Padding = UDim.new(0, 3)
 
             DropListLayout.Changed:Connect(function()
-                Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y)
+                Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y + 100)
             end)  
 
             DropdownButton.MouseEnter:Connect(function()
@@ -791,12 +791,10 @@ function Library:Create(HubName,GameName)
                     opened = true 
                     DropElements(false)
                     DropList.Visible = true
-                    DropList:TweenSize(UDim2.new(0, 400, 0, DropListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.1)
-                    Size()
+                    DropList:TweenSize(UDim2.new(0, 400, 0, DropListLayout.AbsoluteContentSize.Y + 100), "InOut", "Linear", 0.1)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        ImageColor3 = Color3.fromRGB(55,55,55)
+                        ImageColor3 = Color3.fromRGB(150,150,150)
                     }):Play()
-                    Size()
                 end 
             end)  
 
