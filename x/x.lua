@@ -166,7 +166,7 @@ function Library:Create(HubName,GameName)
         end
 
         Tab.Name = tostring(Name).."_Tab"
-        Tab.Parent = TabHolder
+        Tab.Parent = TabFolder
         Tab.Active = true
         Tab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
         Tab.BorderSizePixel = 0
