@@ -13,39 +13,43 @@ function Library:Destroy()
     game:GetService("CoreGui"):FindFirstChild(LibName):Destroy()
 end
 
-function Library:Draggable(Object)
-    local Dragging
-    local DraggingInput
-    local DraggingStart
-    local StartPostion
-
+function Library:Drag(obj)
+    local UserInputService = game:GetService("UserInputService")
+    
+    local gui = obj
+    
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+    
     local function update(input)
-        local delta = input.Position - DraggingStart
-        Object.Position = UDim2.new(StartPostion.X.Scale, StartPostion.X.Offset + delta.X, StartPostion.Y.Scale, StartPostion.Y.Offset + delta.Y)
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
     end
-
-    Object.InputBegan:Connect(function(input)
+    
+    gui.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            Dragging = true
-            DraggingStart = input.Position
-            StartPostion = Object.Position
-
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+    
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
-                    Dragging = false
+                    dragging = false
                 end
             end)
         end
     end)
-
-    Object.InputChanged:Connect(function(input)
+    
+    gui.InputChanged:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            DraggingInput = input
+            dragInput = input
         end
     end)
-
+    
     UserInputService.InputChanged:Connect(function(input)
-        if input == DraggingInput and Dragging then
+        if input == dragInput and dragging then
             update(input)
         end
     end)
@@ -147,7 +151,7 @@ function Library:Create(HubName,GameName)
     TabFolder.Name = "TabFolder"
     TabFolder.Parent = TabHolder
 
-    Library:Draggable(Main)
+    Library:Drag(Main)
 
     local Tabs = {}
 
