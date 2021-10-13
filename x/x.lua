@@ -839,12 +839,12 @@ function Library:Create(HubName,GameName)
 
                 OptionButton.MouseEnter:Connect(function()
                     game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(48, 51, 70)
+                        BackgroundColor3 = Color3.fromRGB(63,64,65)
                     }):Play()
                 end)
                 OptionButton.MouseLeave:Connect(function()
                     game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+                        BackgroundColor3 = Color3.fromRGB(45,45,45)
                     }):Play()
                 end)
             end
@@ -890,12 +890,12 @@ function Library:Create(HubName,GameName)
     
                     OptionButton.MouseEnter:Connect(function()
                         game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                            BackgroundColor3 = Color3.fromRGB(48, 51, 70)
+                            BackgroundColor3 = Color3.fromRGB(63,64,65)
                         }):Play()
                     end)
                     OptionButton.MouseLeave:Connect(function()
                         game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                            BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+                            BackgroundColor3 = Color3.fromRGB(45,45,45)
                         }):Play()
                     end)
                 end    
