@@ -196,7 +196,7 @@ function Library:Create(HubName,GameName)
         Tab.ChildAdded:Connect(Size)
         Tab.ChildRemoved:Connect(Size)
 
-        if xVisible then 
+        if Vis then 
             TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         else 
             TabButton.TextColor3 = Color3.fromRGB(180, 180, 180)
