@@ -558,7 +558,7 @@ function Library:Create(HubName,GameName)
             SliderTrail.Name = "SliderTrail"
             SliderTrail.Parent = SliderButton
             SliderTrail.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-            SliderTrail.Size = UDim2.new(0, 68, 0, 10)
+            SliderTrail.Size = UDim2.new(0, 0, 0, 10)
             SliderTrail.BorderSizePixel = 0
 
             SliderTrailCorner.Name = "SliderTrailCorner"
