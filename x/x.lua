@@ -563,7 +563,6 @@ function Library:Create(HubName,GameName)
             SliderTrailCorner.Name = "SliderTrailCorner"
             SliderTrailCorner.Parent = SliderTrail
 
-            local ms = game.Players.LocalPlayer:GetMouse()
             local uis = game:GetService("UserInputService")
             local Value
             local mouse = game:GetService("Players").LocalPlayer:GetMouse();
