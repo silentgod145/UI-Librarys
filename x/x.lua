@@ -155,7 +155,7 @@ function Library:Create(HubName,GameName)
 
     local Tabs = {}
 
-    function Tabs:Tabs(Name,Vis)
+    function Tabs:Tab(Name,Vis)
         local Name = Name or "Tab"
         local Tab = Instance.new("ScrollingFrame")
         local TabListLayout = Instance.new("UIListLayout")
