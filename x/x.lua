@@ -583,7 +583,7 @@ function Library:Create(HubName,GameName)
                     pcall(function()
                         Callback(Value)
                     end)
-                    SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 389), 0, 10), "InOut", "Linear", 0.05, true)
+                    SliderTrail:TweenSize(UDim2.new(0, math.clamp(mouse.X - SliderTrail.AbsolutePosition.X, 0, 382), 0, 10), "InOut", "Linear", 0.05, true)
                 end)
                 releaseconnection = uis.InputEnded:Connect(function(Mouse)
                     if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -824,7 +824,7 @@ function Library:Create(HubName,GameName)
                             b.TextColor3 = Color3.fromRGB(180,180,180)
                         end 
                     end
-                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         TextColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
                     DropList:TweenSize(UDim2.new(0, 400, 0, 35), "InOut", "Linear", 0.1)
@@ -838,13 +838,13 @@ function Library:Create(HubName,GameName)
                     Size()
                 end)
 
-                Option.MouseEnter:Connect(function()
-                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                OptionButton.MouseEnter:Connect(function()
+                    game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         BackgroundColor3 = Color3.fromRGB(48, 51, 70)
                     }):Play()
                 end)
-                Option.MouseLeave:Connect(function()
-                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                OptionButton.MouseLeave:Connect(function()
+                    game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         BackgroundColor3 = Color3.fromRGB(40, 42, 60)
                     }):Play()
                 end)
@@ -864,10 +864,10 @@ function Library:Create(HubName,GameName)
                     OptionButton.Text = "Option"
                     OptionButton.TextColor3 = Color3.fromRGB(255, 255, 255)
                     OptionButton.TextSize = 16.000
-
+    
                     OptionButtonCorner.Name = "OptionButtonCorner"
                     OptionButtonCorner.Parent = OptionButton
-
+    
                     OptionButton.MouseButton1Down:Connect(function()
                         Callback(v)
                         for a,b in pairs(DropList:GetChildren()) do 
@@ -875,7 +875,7 @@ function Library:Create(HubName,GameName)
                                 b.TextColor3 = Color3.fromRGB(180,180,180)
                             end 
                         end
-                        game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                        game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             TextColor3 = Color3.fromRGB(255,255,255)
                         }):Play()
                         DropList:TweenSize(UDim2.new(0, 400, 0, 35), "InOut", "Linear", 0.1)
@@ -888,18 +888,18 @@ function Library:Create(HubName,GameName)
                         DropElements(true)
                         Size()
                     end)
-
-                    Option.MouseEnter:Connect(function()
-                        game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+    
+                    OptionButton.MouseEnter:Connect(function()
+                        game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             BackgroundColor3 = Color3.fromRGB(48, 51, 70)
                         }):Play()
                     end)
-                    Option.MouseLeave:Connect(function()
-                        game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                    OptionButton.MouseLeave:Connect(function()
+                        game:GetService("TweenService"):Create(OptionButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             BackgroundColor3 = Color3.fromRGB(40, 42, 60)
                         }):Play()
                     end)
-                end
+                end    
             end
             return DropdownFunction
         end
