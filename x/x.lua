@@ -559,6 +559,7 @@ function Library:Create(HubName,GameName)
             SliderTrail.Parent = SliderButton
             SliderTrail.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
             SliderTrail.Size = UDim2.new(0, 68, 0, 10)
+            SliderTrail.BorderSizePixel = 0
 
             SliderTrailCorner.Name = "SliderTrailCorner"
             SliderTrailCorner.Parent = SliderTrail
@@ -792,6 +793,7 @@ function Library:Create(HubName,GameName)
                     DropElements(false)
                     DropList.Visible = true
                     DropList:TweenSize(UDim2.new(0, 400, 0, DropListLayout.AbsoluteContentSize.Y + 100), "InOut", "Linear", 0.1)
+                    Tab.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(150,150,150)
                     }):Play()
