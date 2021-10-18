@@ -198,6 +198,7 @@ function Library:Create(xHubName,xGameName)
         TabButton.Text = Name
         TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         TabButton.TextSize = 14.000
+        TabButton.ZIndex = 2
 
         Size()
         Tab.ChildAdded:Connect(Size)
@@ -307,6 +308,7 @@ function Library:Create(xHubName,xGameName)
             Button.TextSize = 16.000
             Button.Text = Name
             Button.TextXAlignment = Enum.TextXAlignment.Left
+            Button.ZIndex = 2
             
             ButtonCorner.Name = "ButtonCorner"
             ButtonCorner.Parent = Button
@@ -355,6 +357,7 @@ function Library:Create(xHubName,xGameName)
             local ToggleCorner = Instance.new("UICorner")
             local ToggleCircle = Instance.new("ImageLabel")
             local ToggleButton = Instance.new("TextButton")
+            local ToggleF = Instance.new("Frame")
 
             ToggleFrame.Name = tostring(Name).."_Toggle"
             ToggleFrame.Parent = Tab
@@ -381,27 +384,34 @@ function Library:Create(xHubName,xGameName)
             ToggleFrameCorner.Name = "ToggleFrameCorner"
             ToggleFrameCorner.Parent = ToggleFrame
 
+            ToggleF.Name = "ToggleF"
+            ToggleF.Parent = ToggleFrame
+            ToggleF.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
+            ToggleF.BackgroundTransparency = 0
+            ToggleF.BorderSizePixel = 0
+            ToggleF.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
+            ToggleF.Size = UDim2.new(0, 45, 0, 23)
+
+            ToggleCorner.CornerRadius = UDim.new(0, 25)
+            ToggleCorner.Name = "ToggleCorner"
+            ToggleCorner.Parent = ToggleF
+
             ToggleButton.Name = "ToggleButton"
-            ToggleButton.Parent = 
+            ToggleButton.Parent = ToggleF
             ToggleButton.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-            ToggleButton.BackgroundTransparency = 0
+            ToggleButton.BackgroundTransparency = 1
             ToggleButton.BorderSizePixel = 0
-            ToggleButton.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
             ToggleButton.Size = UDim2.new(0, 45, 0, 23)
             ToggleButton.Font = Enum.Font.SourceSans
             ToggleButton.Text = ""
             ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
             ToggleButton.TextSize = 14.000
 
-            ToggleCorner.CornerRadius = UDim.new(0, 25)
-            ToggleCorner.Name = "ToggleCorner"
-            ToggleCorner.Parent = ToggleButton
-
             ToggleCircle.Name = "ToggleCircle"
-            ToggleCircle.Parent = Togglex
+            ToggleCircle.Parent = ToggleF
             ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             ToggleCircle.BackgroundTransparency = 1.000
-            ToggleCircle.Position = UDim2.new(0.559, 0,0.153, 0)
+            ToggleCircle.Position = UDim2.new(0.093, 0,0.153, 0)
             ToggleCircle.Size = UDim2.new(0, 17, 0, 17)
             ToggleCircle.Image = "rbxassetid://3570695787"
             ToggleCircle.ScaleType = Enum.ScaleType.Slice
@@ -411,11 +421,11 @@ function Library:Create(xHubName,xGameName)
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(ToggleButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0.559, 0,0.153, 0))
+                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
                 else
-                    game:GetService("TweenService"):Create(ToggleButton, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
-                    ToggleCircle:TweenPosition(UDim2.new(0.093, 0,0.153, 0))
+                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
                 end
                 pcall(Callback,ToggleEnabled)
             end)
@@ -508,9 +518,6 @@ function Library:Create(xHubName,xGameName)
             local mouse = game:GetService("Players").LocalPlayer:GetMouse();
 
             SliderButton.MouseButton1Down:Connect(function()
-                game:GetService("TweenService"):Create(SliderButton, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                    BackgroundColor3 = Color3.fromRGB(55, 55, 75)
-                }):Play()
                 game:GetService("TweenService"):Create(SliderValue, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                     TextTransparency = 0
                 }):Play()
@@ -655,6 +662,7 @@ function Library:Create(xHubName,xGameName)
             KeybindButton.Text = Keyx
             KeybindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
             KeybindButton.TextSize = 14.000
+            KeybindButton.ZIndex = 2
             
             KeybindButtonCorner.Name = "KeybindButtonCorner"
             KeybindButtonCorner.Parent = KeybindButton
@@ -683,7 +691,7 @@ function Library:Create(xHubName,xGameName)
             end)
         end
 
-        function Elements:Dropdown(Name,List,Callback)
+        function Elements:Dropdown(Name,Listx,Callback)
             local Name = Name or "Dropdown"
             local DropdownFunction = {}
             local Callback = Callback or function() end
@@ -750,8 +758,10 @@ function Library:Create(xHubName,xGameName)
             DropList.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
             DropList.BackgroundTransparency = 1.000
             DropList.BorderSizePixel = 0
-            DropList.Position = UDim2.new(0, 0, 1.14285719, 0)
+            DropList.ClipsDescendants = true
             DropList.Size = UDim2.new(0, 408, 0, 35)
+            DropList.ZIndex = 100
+            DropList.Position = UDim2.new(0, 0, 1.14285719, 0)
             DropList.Visible = false
 
             DropListLayout.Name = "DropListLayout"
@@ -761,8 +771,8 @@ function Library:Create(xHubName,xGameName)
             DropListLayout.Padding = UDim.new(0, 3)
 
             DropListLayout.Changed:Connect(function()
-                Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y + 100)
-            end)   
+                Tab.CanvasSize = UDim2.new(0, 0, 0, DropListLayout.AbsoluteContentSize.Y)
+            end)  
 
             DropdownButton.MouseEnter:Connect(function()
                 game:GetService("TweenService"):Create(DropdownFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
@@ -775,10 +785,10 @@ function Library:Create(xHubName,xGameName)
                 }):Play()
             end)
 
-            local function UpdateElements(Vis)
+            local function DropElements(x)
                 for i,v in pairs(Tab:GetChildren()) do 
                     if v:IsA("Frame") and v ~= DropdownFrame then 
-                        v.Visible = Vis
+                        v.Visible = x
                     end
                 end
             end
@@ -807,12 +817,10 @@ function Library:Create(xHubName,xGameName)
                 end 
             end)  
 
-            for i,v in pairs(List:GetChildren()) do 
+            for i,v in pairs(Listx) do 
                 local Option = Instance.new("TextButton")
                 local OptionCorner = Instance.new("UICorner")
-
-                DropSize = DropSize + 35
-
+                
                 Option.Name = tostring(v).."_Option"
                 Option.Parent = DropList
                 Option.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
@@ -826,18 +834,23 @@ function Library:Create(xHubName,xGameName)
                 OptionCorner.Parent = Option
 
                 Option.MouseButton1Down:Connect(function()
-                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                        BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-                    }):Play()
                     Callback(v)
-                    Size()
-                    opened = false 
+                    for a,b in pairs(DropList:GetChildren()) do 
+                        if b:IsA("TextButton") then 
+                            b.TextColor3 = Color3.fromRGB(255,255,255)
+                        end 
+                    end
+                    game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                        TextColor3 = Color3.fromRGB(55, 74, 251)
+                    }):Play()
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
-                    wait(0.1)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
+                    wait(0.1)
                     DropList.Visible = false
+                    opened = false
+                    DropElements(true)
                     Size()
                 end)
 
@@ -855,7 +868,7 @@ function Library:Create(xHubName,xGameName)
 
             function DropdownFunction:UpdateDropdown(List)
                 local List = List or {}
-                for i,v in pairs(List:GetChildren()) do 
+                for i,v in pairs(List) do 
                     local Option = Instance.new("TextButton")
                     local OptionCorner = Instance.new("UICorner")
     
@@ -874,18 +887,23 @@ function Library:Create(xHubName,xGameName)
                     OptionCorner.Parent = Option
     
                     Option.MouseButton1Down:Connect(function()
-                        game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-                            BackgroundColor3 = Color3.fromRGB(55, 74, 251)
-                        }):Play()
                         Callback(v)
-                        Size()
-                        opened = false 
+                        for a,b in pairs(DropList:GetChildren()) do 
+                            if b:IsA("TextButton") then 
+                                b.TextColor3 = Color3.fromRGB(255,255,255)
+                            end 
+                        end
+                        game:GetService("TweenService"):Create(Option, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                            TextColor3 = Color3.fromRGB(55, 74, 251)
+                        }):Play()
                         DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
-                        wait(0.1)
                         game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                             ImageColor3 = Color3.fromRGB(255,255,255)
                         }):Play()
+                        wait(0.1)
                         DropList.Visible = false
+                        opened = false
+                        DropElements(true)
                         Size()
                     end)
     
