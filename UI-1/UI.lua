@@ -798,24 +798,22 @@ function Library:Create(xHubName,xGameName)
                     Size()
                     opened = false 
                     DropList:TweenSize(UDim2.new(0, 408, 0, 35), "InOut", "Linear", 0.1)
+                    wait(0.1)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(255,255,255)
                     }):Play()
-                    wait(0.1)
-                    DropElements(true)
                     DropList.Visible = false
-                    Tab.CanvasSize = UDim2.new(0,0,0,TabListLayout.AbsoluteContentSize.Y)
                     Size()
                 else 
                     opened = true 
-                    DropElements(false)
                     DropList.Visible = true
                     DropList:TweenSize(UDim2.new(0, 408, 0, DropListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.1)
-                    Size()
+                    Tab.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
+                    wait(0.1)
                     game:GetService("TweenService"):Create(DropdownIcon, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                         ImageColor3 = Color3.fromRGB(55, 74, 251)
                     }):Play()
-                    Size()
+                    Tab.CanvasSize = UDim2.new(0,0,0,DropListLayout.AbsoluteContentSize.Y + 100)
                 end 
             end)  
 
