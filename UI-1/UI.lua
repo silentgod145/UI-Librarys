@@ -63,12 +63,16 @@ function Library:Create(xHubName,xGameName)
     local Filler = Instance.new("Frame")
     local HubName = Instance.new("TextLabel")
     local Line = Instance.new("Frame")
-    local ActualSide = Instance.new("Frame")
+    local ActualSide = Instance.new("ScrollingFrame")
     local ActualSideListLayout = Instance.new("UIListLayout")
     local SideLine = Instance.new("Frame")
     local GameName = Instance.new("TextLabel")
     local TabHolder = Instance.new("Frame")
     local Tabs = Instance.new("Folder")
+
+    function ScrollSize()
+        ActualSide.CanvasSize = UDim2.new(0, 0, 0, ActualSideListLayout.AbsoluteContentSize.Y)
+    end
 
     ScreenGui.Parent = game.CoreGui
     ScreenGui.ResetOnSpawn = false 
@@ -125,6 +129,7 @@ function Library:Create(xHubName,xGameName)
     ActualSide.BorderSizePixel = 0
     ActualSide.Position = UDim2.new(0, 0, 0.172972977, 0)
     ActualSide.Size = UDim2.new(0, 139, 0, 297)
+    ActualSide.CanvasSize = UDim2.new(0,0,0,0)
 
     ActualSideListLayout.Name = "ActualSideListLayout"
     ActualSideListLayout.Parent = ActualSide
@@ -169,6 +174,8 @@ function Library:Create(xHubName,xGameName)
         local Tab = Instance.new("ScrollingFrame")
         local TabListLayout = Instance.new("UIListLayout")
         local TabButton = Instance.new("TextButton")
+        
+        ScrollSize()
 
         function Size()
             Tab.CanvasSize = UDim2.new(0, 0, 0, TabListLayout.AbsoluteContentSize.Y)
