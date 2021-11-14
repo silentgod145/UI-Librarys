@@ -130,7 +130,7 @@ function Library:Create(xHubName,xGameName)
     ActualSide.Position = UDim2.new(0, 0, 0.172972977, 0)
     ActualSide.Size = UDim2.new(0, 139, 0, 297)
     ActualSide.CanvasSize = UDim2.new(0,0,0,0)
-    ActualSide.ScrollBarSize = UDim2.new(0,0,0,0)
+    ActualSide.ScrollBarThickness = 0
 
     ActualSideListLayout.Name = "ActualSideListLayout"
     ActualSideListLayout.Parent = ActualSide
